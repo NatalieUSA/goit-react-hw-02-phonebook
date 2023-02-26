@@ -17,8 +17,6 @@ export const ListItem = styled.li`
      margin-bottom: 10px;
      grid-template-columns: 30% 5% 25% 10%;
   }
-
- 
   }
 `;
 
