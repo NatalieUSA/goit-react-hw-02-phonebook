@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types';
-import styles from './button.module.scss';
-
+import { Btn } from './Button.styled';
 export const Button = ({ children, onClick, type }) => {
   // console.log(children);
   return (
-    <button onClick={onClick} className={styles.btn} type={type}>
+    <Btn onClick={onClick} type={type}>
       {children}
-    </button>
+    </Btn>
   );
 };
 

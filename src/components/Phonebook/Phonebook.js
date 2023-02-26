@@ -6,7 +6,7 @@ import { PhonebookList } from './PhonebookList/PhonebookList';
 import { PhonebookFilter } from './PhonebookFilter/PhonebookFilter';
 import { PhonebookForm } from './PhonebookForm/PhonebookForm';
 
-import styles from './phonebook.module.scss';
+import { Block, Wrap } from './Phonebook.styled';
 
 export class Phonebook extends Component {
   state = {
@@ -71,18 +71,18 @@ export class Phonebook extends Component {
 
     return (
       <div>
-        <div className={styles.wrapper}>
-          <div className={styles.block}>
+        <Wrap>
+          <Block>
             <PhonebookForm onSubmit={addContact} />
-          </div>
+          </Block>
 
-          <div className={styles.block}>
+          <Block>
             <PhonebookFilter handleChange={handleFilter} />
 
             <PhonebookList removeContact={removeContact} contacts={contacts} />
             {!isContacts && <p>No contacts in list</p>}
-          </div>
-        </div>
+          </Block>
+        </Wrap>
       </div>
     );
   }

@@ -1,9 +1,9 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import styles from '../phonebook.module.scss';
 import { Button } from 'components/shared/Button/Button';
 import { initialState } from './initialState';
+import { FormGroup, Input, Label } from './PhonebookForm.styled';
 
 export class PhonebookForm extends Component {
   state = {
@@ -35,9 +35,9 @@ export class PhonebookForm extends Component {
     const { name, number } = this.state;
     return (
       <form onSubmit={handleSubmit}>
-        <div className={styles.formGroup}>
-          <label>Name</label>
-          <input
+        <FormGroup>
+          <Label>Name</Label>
+          <Input
             onChange={handleChange}
             placeholder="enter name"
             type="text"
@@ -47,10 +47,10 @@ export class PhonebookForm extends Component {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-        </div>
-        <div className={styles.formGroup}>
-          <label>Number</label>
-          <input
+        </FormGroup>
+        <FormGroup>
+          <Label>Number</Label>
+          <Input
             onChange={handleChange}
             placeholder="enter number"
             type="text"
@@ -60,7 +60,7 @@ export class PhonebookForm extends Component {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
-        </div>
+        </FormGroup>
         <Button type="submit">Add contact</Button>
       </form>
     );

@@ -1,21 +1,16 @@
+import { GlobalStyle } from './GlobalStyle';
+
 import { Title } from './shared/Title/Title';
 import { Phonebook } from './Phonebook/Phonebook';
-import '../../src/index.css';
+import { Layout } from './Layout';
+
 export const App = () => {
   return (
-    <div
-    // style={{
-    //   height: '100vh',
-    //   display: 'flex',
-    //   justifyContent: 'center',
-    //   alignItems: 'center',
-    //   fontSize: 40,
-    //   color: '#010101'
-    // }}
-    >
+    <Layout>
+      <GlobalStyle />
       <Title>Phonebook</Title>
 
       <Phonebook />
-    </div>
+    </Layout>
   );
 };
