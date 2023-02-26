@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { Button } from 'components/shared/Button/Button';
 import { BsTelephone } from 'react-icons/bs';
 
@@ -16,4 +18,8 @@ export const PhonebookList = ({ removeContact, contacts }) => {
 
 PhonebookList.defaultProps = {
   contacts: [],
+};
+
+PhonebookList.propTypes = {
+  removeContact: PropTypes.func.isRequired,
 };

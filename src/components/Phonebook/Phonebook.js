@@ -1,19 +1,21 @@
 import { Component } from 'react';
-
-import styles from './phonebook.module.scss';
-
-// import { Button } from 'components/shared/Button/Button';
 import { nanoid } from 'nanoid';
+
+import { contacts } from './contacts';
 import { PhonebookList } from './PhonebookList/PhonebookList';
 import { PhonebookFilter } from './PhonebookFilter/PhonebookFilter';
-import { contacts } from './contacts';
 import { PhonebookForm } from './PhonebookForm/PhonebookForm';
+
+import styles from './phonebook.module.scss';
 
 export class Phonebook extends Component {
   state = {
     contacts: [...contacts],
     filter: '',
+    name: '',
+    number: '',
   };
+
   addContact = ({ name, number }) => {
     if (this.isDublicate(name)) {
       return alert(`${name} is already in contacts`);
@@ -30,13 +32,8 @@ export class Phonebook extends Component {
     });
   };
 
-  // handleChange = ({ target }) => {
-  //   console.log(target.value);
-  //   const { value, name } = target;
-  //   this.setState({ [name]: value });
-  // };
   handleFilter = ({ target }) => {
-    this.addContact.setState({ filter: target.value });
+    this.setState({ filter: target.value });
   };
 
   removeContact = id => {
@@ -49,10 +46,10 @@ export class Phonebook extends Component {
   isDublicate(name) {
     const normalizedName = name.toLowerCase();
     const { contacts } = this.state;
-    const result = contacts.find(({ name }) => {
+    const contact = contacts.find(({ name }) => {
       return name.toLowerCase() === normalizedName;
     });
-    return Boolean(result);
+    return Boolean(contact);
   }
 
   getFilteredContacts() {
@@ -69,7 +66,6 @@ export class Phonebook extends Component {
 
   render() {
     const { addContact, handleFilter, removeContact } = this;
-
     const contacts = this.getFilteredContacts();
     const isContacts = Boolean(contacts.length);
 
@@ -79,15 +75,12 @@ export class Phonebook extends Component {
           <div className={styles.block}>
             <PhonebookForm onSubmit={addContact} />
           </div>
+
           <div className={styles.block}>
             <PhonebookFilter handleChange={handleFilter} />
 
-            {isContacts && (
-              <Phonebook removeContact={removeContact} contacts={contacts} />
-            )}
-            {!isContacts && <p>No contacts in list</p>}
-
             <PhonebookList removeContact={removeContact} contacts={contacts} />
+            {!isContacts && <p>No contacts in list</p>}
           </div>
         </div>
       </div>
@@ -95,6 +88,7 @@ export class Phonebook extends Component {
   }
 }
 
+//**************************** */
 // import { Component } from 'react';
 // import { nanoid } from 'nanoid';
 // import styles from './phonebook.module.scss';
